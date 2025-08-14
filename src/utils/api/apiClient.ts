@@ -1,10 +1,9 @@
-import { NextRequest } from "next/server";
 import { Applicant, Application } from "../schemas/application";
 
 const myHeaders = new Headers();
-myHeaders.append("Accept", "*/*");
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Content-Type", "application/json");
 myHeaders.append("X-Nesto-Candidat", "Marek Gola");
-myHeaders.append("Cookie", "nestoToken=64e4c740-6681-47eb-bbb1-cc207c389db2");
 
 const defaultOptions: RequestInit = {
     method: "GET",
@@ -19,7 +18,11 @@ export const getProducts = async (options: RequestInit = {}) =>
 
 export const createApplication = async (productId: number, options: RequestInit = {}) =>
     fetch("https://nesto-fe-exam.vercel.app/api/applications", {
-        method: "POST", ...defaultOptions, ...options, body: JSON.stringify({ productId }), next: {
+        ...defaultOptions,
+        method: "POST",
+        body: JSON.stringify({ productId }),
+        ...options,
+        next: {
             revalidate: 60 * 60, // 1 hour
             tags: ["products"]
         }
@@ -27,7 +30,10 @@ export const createApplication = async (productId: number, options: RequestInit 
 
 export const getApplication = async (applicationId: string, options: RequestInit = {}) =>
     fetch(`https://nesto-fe-exam.vercel.app/api/applications/${applicationId}`, {
-        method: "GET", ...defaultOptions, ...options, next: {
+        ...defaultOptions,
+        method: "GET",
+        ...options,
+        next: {
             revalidate: 60 * 60, // 1 hour
             tags: ["products"]
         }
@@ -36,6 +42,11 @@ export const getApplication = async (applicationId: string, options: RequestInit
 type UpdateApplication = Partial<Application> & Pick<Application, "id"> & { applicants?: Partial<Applicant>[] }
 
 export const updateApplication = async (application: UpdateApplication, options: RequestInit = {}) =>
-    fetch(`https://nesto-fe-exam.vercel.app/api/applications/${application.id}`, { method: "PUT", ...defaultOptions, ...options, body: JSON.stringify(application) })
+    fetch(`https://nesto-fe-exam.vercel.app/api/applications/${application.id}`, {
+        ...defaultOptions,
+        method: "PUT",
+        body: JSON.stringify(application),
+        ...options
+    })
 
 

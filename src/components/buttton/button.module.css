@@ -1,6 +1,6 @@
-.selectButton {
+.secondaryButton {
     background: transparent;
-    color: var(--color_blue);
+    color: #374151;
     border: 2px solid #d1d5db;
     border-radius: 30px;
     padding: 12px 32px;
@@ -9,24 +9,23 @@
     cursor: pointer;
     transition: all 0.2s ease;
     width: auto;
-    min-width: 200px;
 }
 
-.selectButton:hover {
-    background: var(--color_light_blue);
-    border-color: var(--color_light_blue);
+.secondaryButton:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
     transform: translateY(-1px);
 }
 
-.selectButton:active {
+.secondaryButton:active {
     transform: translateY(0);
 }
 
-.seeAllButton {
-    background: var(--color_blue);
+.primaryButton {
+    background: #3b82f6;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 30px;
     padding: 12px 24px;
     font-size: 16px;
     font-weight: 500;
@@ -34,12 +33,17 @@
     transition: all 0.2s ease;
 }
 
-.seeAllButton:hover {
-    background: var(--color_blue);
+.primaryButton:hover {
+    background: #2563eb;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(var(--color_blue), 0.3);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
-.seeAllButton:active {
+.primaryButton:active {
     transform: translateY(0);
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

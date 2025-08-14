@@ -34,7 +34,7 @@ const ProductSelector = () => {
             {/* See all button */}
             <div className={styles.seeAllContainer}>
                 <Button
-                    variant="see-all"
+                    variant="primary"
                     onClick={() => setShowAll(!showAll)}
                 >
                     {showAll ? "Show less" : "See all products"}

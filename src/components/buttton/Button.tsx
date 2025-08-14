@@ -4,27 +4,28 @@ import Link from "next/link"
 import styles from "./button.module.css"
 
 interface ButtonProps {
-    variant: "select" | "see-all"
+    variant: "secondary" | "primary"
     children: React.ReactNode
     href?: string
     onClick?: () => void
     className?: string
+    disabled?: boolean
+    type?: "button" | "submit"
 }
 
-const Button = ({ variant, children, href, onClick, className }: ButtonProps) => {
-    const buttonClassName = variant === "select" ? styles.selectButton : styles.seeAllButton
-    const combinedClassName = className ? `${buttonClassName} ${className}` : buttonClassName
-
-    if (variant === "select" && href) {
+const Button = ({ variant, children, href, onClick, type, className, disabled }: ButtonProps) => {
+    const buttonClassName = variant === "secondary" ? styles.secondaryButton : styles.primaryButton
+    const disabledClassName = disabled ? styles.disabled : ""
+    if (variant === "secondary") {
         return (
-            <Link href={href} className={combinedClassName}>
+            <Link href={disabled ? "#" : href || "#"} className={`${buttonClassName} ${className} ${disabledClassName}`} >
                 {children}
             </Link>
         )
     }
 
     return (
-        <button className={combinedClassName} onClick={onClick}>
+        <button className={`${buttonClassName} ${className}`} onClick={onClick} type={type} disabled={disabled} >
             {children}
         </button>
     )

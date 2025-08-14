@@ -1,18 +1,17 @@
-import styles from "@/app/page.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className={styles.footer}>
-            <div className={styles.logoContainer}>
+        <footer className={"footer"}>
+            <div className={"logoContainer hidden-on-small"}>
                 <Image
-                    className={styles.logo}
+                    className={"logo"}
                     src="/nestoIcon-Primary.png"
                     alt="Nesto logo"
                     title="Nesto logo"
-                    width={24}
-                    height={24}
+                    width={16}
+                    height={16}
                     priority
                 />
             </div>
@@ -56,14 +55,14 @@ export default function Footer() {
                 />
                 Careers
             </a>
-            <div className={styles.logoContainer}>
+            <div className={"logoContainer hidden-on-small"}>
                 <Image
-                    className={styles.logo}
+                    className={"logo"}
                     src="/nestoIcon-Primary.png"
                     alt="Nesto logo"
                     title="Nesto logo"
-                    width={24}
-                    height={24}
+                    width={16}
+                    height={16}
                     priority
                 />
             </div>

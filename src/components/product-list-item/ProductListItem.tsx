@@ -18,7 +18,7 @@ const ProductListItem = ({ product, isFirst, }: ProductListItemProps) => {
             <div className={styles.productItem}>
                 <p className={styles.productName}>({product.name})</p>
                 <div className={styles.rate}>{formatRate(product.rate)}</div>
-                <Button variant="select" href={`/application?productId=${product.id}`}>
+                <Button variant="secondary" href={`/application?productId=${product.id}`}>
                     Select
                 </Button>
             </div>

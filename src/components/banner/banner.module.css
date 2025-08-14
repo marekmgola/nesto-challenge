@@ -1,0 +1,65 @@
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-weight: 500;
+    animation: slideDown 0.3s ease-out;
+}
+
+.success {
+    background-color: var(--color_light_yellow);
+    color: var(--color_dark_gray);
+    border: 1px solid var(--color_yellow);
+}
+
+.error {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+
+.info {
+    background-color: var(--color_light_blue);
+    color: var(--color_blue);
+    border: 1px solid var(--color_gray_blue);
+}
+
+.message {
+    flex: 1;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+    margin-left: 12px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
