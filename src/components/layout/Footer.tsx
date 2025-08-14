@@ -1,5 +1,6 @@
 import styles from "@/app/page.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
     return (
@@ -10,53 +11,62 @@ export default function Footer() {
                     src="/nestoIcon-Primary.png"
                     alt="Nesto logo"
                     title="Nesto logo"
-                    width={60}
-                    height={60}
+                    width={24}
+                    height={24}
                     priority
                 />
             </div>
             <a
-                href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+                href="https://www.nesto.ca/about-us/"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 <Image
                     aria-hidden
-                    src="/file.svg"
-                    alt="File icon"
+                    src="/about.svg"
+                    alt="About icon"
                     width={16}
                     height={16}
                 />
-                Learn
+                About us
             </a>
+            <Link
+                href="/application"
+            >
+                <Image
+                    aria-hidden
+                    src="/document.svg"
+                    alt="Document icon"
+                    width={16}
+                    height={16}
+                />
+                My Applications
+            </Link>
             <a
-                href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+                href="https://ats.rippling.com/en-CA/nesto/jobs/d79eaaf5-acbf-4744-aa32-b8d651c0a15e"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 <Image
                     aria-hidden
-                    src="/window.svg"
-                    alt="Window icon"
+                    src="/career.svg"
+                    alt="Career icon"
                     width={16}
                     height={16}
                 />
-                Examples
+                Careers
             </a>
-            <a
-                href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
+            <div className={styles.logoContainer}>
                 <Image
-                    aria-hidden
-                    src="/globe.svg"
-                    alt="Globe icon"
-                    width={16}
-                    height={16}
+                    className={styles.logo}
+                    src="/nestoIcon-Primary.png"
+                    alt="Nesto logo"
+                    title="Nesto logo"
+                    width={24}
+                    height={24}
+                    priority
                 />
-                Go to nextjs.org →
-            </a>
+            </div>
         </footer>
     )
 }

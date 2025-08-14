@@ -202,6 +202,21 @@ a {
   text-decoration: none;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+
+}
+
+.productSeparator {
+  height: 2px;
+  margin: 48px 0;
+  background-color: var(--color_light_gray);
+  border-color: var(--color_light_gray);
+}
+
 /* Force light color scheme */
 html {
   color-scheme: dark;
