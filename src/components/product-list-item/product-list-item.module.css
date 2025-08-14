@@ -1,0 +1,23 @@
+.productItem {
+    margin-bottom: 24px;
+}
+
+.productItem:last-child {
+    margin-bottom: 0;
+}
+
+
+.productName {
+    font-size: 18px;
+    color: #374151;
+    margin: 0 0 16px 0;
+    font-weight: 500;
+}
+
+.rate {
+    font-size: 48px;
+    font-weight: 800;
+    color: #1f2937;
+    margin: 24px 0;
+    line-height: 1;
+}

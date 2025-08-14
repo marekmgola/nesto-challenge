@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import styles from "./product-selector.module.css"
+import styles from "./button.module.css"
 
 interface ButtonProps {
     variant: "select" | "see-all"

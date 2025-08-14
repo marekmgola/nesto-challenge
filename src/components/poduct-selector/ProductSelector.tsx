@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import { useGetAllProducts } from "@/utils/api/apiHooks/useGetAllProducts"
-import ProductList from "./ProductList"
-import Button from "./Button"
+import ProductList from "../product-list/ProductList"
+import Button from "../buttton/Button"
 import styles from "./product-selector.module.css"
 
 const ProductSelector = () => {

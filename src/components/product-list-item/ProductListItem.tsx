@@ -1,8 +1,8 @@
 "use client"
 
-import Link from "next/link"
 import { Product } from "@/utils/schemas/product"
-import styles from "./product-selector.module.css"
+import styles from "./product-list-item.module.css"
+import Button from "../buttton/Button"
 
 interface ProductListItemProps {
     product: Product
@@ -14,13 +14,13 @@ const ProductListItem = ({ product, isFirst, }: ProductListItemProps) => {
 
     return (
         <>
-            {!isFirst && <div className={styles.productSeparator} />}
+            {!isFirst && <div className="separator" />}
             <div className={styles.productItem}>
                 <p className={styles.productName}>({product.name})</p>
                 <div className={styles.rate}>{formatRate(product.rate)}</div>
-                <Link href={`/application?productId=${product.id}`} className={styles.selectButton}>
-                    Select this product
-                </Link>
+                <Button variant="select" href={`/application?productId=${product.id}`}>
+                    Select
+                </Button>
             </div>
         </>
     )
