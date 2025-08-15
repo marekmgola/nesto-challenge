@@ -1,0 +1,99 @@
+{
+    "meta": {
+        "title": "Hypothèques Nesto",
+        "description": "Les meilleurs taux hypothécaires sur le web"
+    },
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "cancel": "Annuler",
+    "select": "Sélectionner",
+    "remove": "Supprimer",
+    "finished": "Terminé",
+    "back": "Retour",
+    "yes": "Oui",
+    "no": "Non",
+    "nav": {
+        "aboutUs": "À propos de nous",
+        "myApplications": "Mes Demandes",
+        "careers": "Carrières"
+    },
+    "home": {
+        "title_1": "Les Meilleurs",
+        "title_2": "Taux Hypothécaires au Canada",
+        "bestVariable": "Meilleur variable",
+        "bestFixed": "Meilleur fixe",
+        "showLess": "Afficher moins",
+        "seeAllProducts": "Voir tous les produits"
+    },
+    "application": {
+        "error": {
+            "title": "Erreur",
+            "productIdRequired": "L'ID du produit est requis pour créer une demande."
+        },
+        "loading": {
+            "title": "Chargement...",
+            "creating": "Création de votre demande hypothécaire...",
+            "fetchingDetails": "Veuillez patienter pendant que nous récupérons les détails de la demande.",
+            "fetchingApplications": "Veuillez patienter pendant que nous récupérons vos demandes."
+        },
+        "myApplications": {
+            "title": "Mes Demandes"
+        },
+        "loadingApplication": "Chargement de la Demande...",
+        "loadingApplications": "Chargement des Demandes..."
+    },
+    "applicationForm": {
+        "error": {
+            "title": "Erreur lors de la Création de la Demande",
+            "message": "Nous avons rencontré une erreur lors de la création de votre demande. Veuillez réessayer."
+        },
+        "title": "Nous avons juste besoin de quelques détails",
+        "subtitle": "Veuillez fournir les informations de contact pour tous les demandeurs",
+        "applicant": "Demandeur {number}",
+        "firstName": "Prénom",
+        "lastName": "Nom de famille",
+        "email": "Email",
+        "phone": "Numéro de téléphone",
+        "phonePlaceholder": "(555) 123-4567",
+        "addApplicant": "+ Ajouter un Autre Demandeur",
+        "required": "*"
+    },
+    "banner": {
+        "applicationCreated": "Demande créée!",
+        "applicationSaved": "Demande enregistrée!",
+        "dismiss": "Fermer la bannière"
+    },
+    "applicationDetails": {
+        "title": "Détails",
+        "backToApplications": "Retour aux Demandes",
+        "editApplication": "Modifier la Demande",
+        "applicationInfo": "Informations de la Demande",
+        "applicationId": "ID de la Demande",
+        "type": "Type",
+        "created": "Créé",
+        "product": "Produit",
+        "applicants": "Demandeurs",
+        "email": "Email",
+        "phone": "Téléphone"
+    },
+    "applicationList": {
+        "noApplications": {
+            "title": "Aucune Demande Trouvée",
+            "message": "Vous n'avez pas encore créé de demandes."
+        },
+        "applicationNumber": "Demande #{id}",
+        "created": "Créé: {date}",
+        "productId": "ID Produit: {id}",
+        "applicants": "Demandeurs: {names}",
+        "viewDetails": "Voir les Détails"
+    },
+    "alt": {
+        "nestoMortgages": "Hypothèques Nesto",
+        "nestoLogo": "Logo Nesto",
+        "aboutIcon": "Icône À propos",
+        "documentIcon": "Icône Document",
+        "careerIcon": "Icône Carrière"
+    }
+}

@@ -4,7 +4,7 @@ import Link from "next/link"
 import styles from "./button.module.css"
 
 interface ButtonProps {
-    variant: "secondary" | "primary"
+    variant?: "secondary" | "primary"
     children: React.ReactNode
     href?: string
     onClick?: () => void
@@ -13,10 +13,10 @@ interface ButtonProps {
     type?: "button" | "submit"
 }
 
-const Button = ({ variant, children, href, onClick, type, className, disabled }: ButtonProps) => {
+const Button = ({ variant = 'primary', children, href, onClick, type, className, disabled }: ButtonProps) => {
     const buttonClassName = variant === "secondary" ? styles.secondaryButton : styles.primaryButton
     const disabledClassName = disabled ? styles.disabled : ""
-    if (variant === "secondary") {
+    if (href) {
         return (
             <Link href={disabled ? "#" : href || "#"} className={`${buttonClassName} ${className} ${disabledClassName}`} >
                 {children}

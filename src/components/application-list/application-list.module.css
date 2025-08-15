@@ -1,0 +1,16 @@
+.applicationList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-secondary);
+}
+
+.emptyState h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}

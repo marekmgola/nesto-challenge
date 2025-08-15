@@ -1,32 +1,45 @@
 import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import { getTranslations } from "next-intl/server";
+import Footer from "@/components/layout/footer/Footer";
+import Header from "@/components/layout/header/Header";
 import QueryClientProvider from "@/utils/providers/QueryClientProvider";
 import { inter, interTight } from "@/utils/theme/fonts";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  title: "Nesto Mortgages",
-  description: "Best mortgage rates on the web",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+  
+  return {
+    title: t('meta.title'),
+    description: t('meta.description'),
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = (await import(`../i18n/translations/${locale}.json`)).default;
+
   return (
-    <QueryClientProvider>
-      <html lang="en">
-        <body className={`${inter.variable} ${interTight.variable} layout-container`}>
-          <Header />
-          <main className="main-content">
-            {children}
-          </main>
-          <Footer />
-        </body>
-      </html>
-    </QueryClientProvider>
+    <NextIntlClientProvider messages={messages} locale={locale}>
+      <QueryClientProvider>
+        <html lang={locale} >
+          <body className={`${inter.variable} ${interTight.variable} layout-container`}>
+            <Header />
+            <main className="main-content">
+              {children}
+            </main>
+            <Footer />
+          </body>
+        </html>
+      </QueryClientProvider>
+    </NextIntlClientProvider>
+
   );
 }

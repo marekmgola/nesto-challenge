@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import styles from "./banner.module.css";
+import { useTranslations } from "next-intl";
+import { motion, AnimatePresence } from "framer-motion"
 
 interface BannerProps {
     message: string;
@@ -18,8 +20,8 @@ export default function Banner({
     autoHide = true,
     duration = 5000
 }: BannerProps) {
+    const t = useTranslations();
     const [isVisible, setIsVisible] = useState(true);
-
     useEffect(() => {
         if (autoHide) {
             const timer = setTimeout(() => {
@@ -34,6 +36,7 @@ export default function Banner({
     if (!isVisible) return null;
 
     return (
+
         <div className={`${styles.banner} ${styles[type]}`}>
             <span className={styles.message}>{message}</span>
             {onDismiss && (
@@ -43,7 +46,7 @@ export default function Banner({
                         setIsVisible(false);
                         onDismiss();
                     }}
-                    aria-label="Dismiss banner"
+                    aria-label={t('banner.dismiss')}
                 >
                     ×
                 </button>

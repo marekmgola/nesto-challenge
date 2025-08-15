@@ -7,18 +7,19 @@
     margin-bottom: 24px;
     font-weight: 500;
     animation: slideDown 0.3s ease-out;
+
 }
 
 .success {
-    background-color: var(--color_light_yellow);
+    background-color: rgb(148, 251, 148);
     color: var(--color_dark_gray);
     border: 1px solid var(--color_yellow);
 }
 
 .error {
-    background-color: #fee2e2;
-    color: #dc2626;
-    border: 1px solid #fca5a5;
+    background-color: var(--color_light_yellow);
+    color: var(--color_orange);
+    border: 1px solid var(--color_yellow);
 }
 
 .info {

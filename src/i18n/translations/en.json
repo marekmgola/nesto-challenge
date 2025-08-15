@@ -1,0 +1,99 @@
+{
+    "meta": {
+        "title": "Nesto Mortgages",
+        "description": "Best mortgage rates on the web"
+    },
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "select": "Select",
+    "remove": "Remove",
+    "finished": "Finished",
+    "back": "Back",
+    "yes": "Yes",
+    "no": "No",
+    "nav": {
+        "aboutUs": "About us",
+        "myApplications": "My Applications",
+        "careers": "Careers"
+    },
+    "home": {
+        "title_1": "Today's Best",
+        "title_2": "Mortgage Rates in Canada",
+        "bestVariable": "Best variable",
+        "bestFixed": "Best fixed",
+        "showLess": "Show less",
+        "seeAllProducts": "See all products"
+    },
+    "application": {
+        "error": {
+            "title": "Error",
+            "productIdRequired": "Product ID is required to create an application."
+        },
+        "loading": {
+            "title": "Loading...",
+            "creating": "Creating your mortgage application...",
+            "fetchingDetails": "Please wait while we fetch application details.",
+            "fetchingApplications": "Please wait while we fetch your applications."
+        },
+        "myApplications": {
+            "title": "My Applications"
+        },
+        "loadingApplication": "Loading Application...",
+        "loadingApplications": "Loading Applications..."
+    },
+    "applicationForm": {
+        "error": {
+            "title": "Error Creating Application",
+            "message": "We encountered an error while creating your application. Please try again."
+        },
+        "title": "We just need a few details",
+        "subtitle": "Please provide contact information for all applicants",
+        "applicant": "Applicant {number}",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "phonePlaceholder": "(555) 123-4567",
+        "addApplicant": "+ Add Another Applicant",
+        "required": "*"
+    },
+    "banner": {
+        "applicationCreated": "Application created!",
+        "applicationSaved": "Application saved!",
+        "dismiss": "Dismiss banner"
+    },
+    "applicationDetails": {
+        "title": "Details",
+        "backToApplications": "Back to Applications",
+        "editApplication": "Edit Application",
+        "applicationInfo": "Application Information",
+        "applicationId": "Application ID",
+        "type": "Type",
+        "created": "Created",
+        "product": "Product",
+        "applicants": "Applicants",
+        "email": "Email",
+        "phone": "Phone"
+    },
+    "applicationList": {
+        "noApplications": {
+            "title": "No Applications Found",
+            "message": "You haven't created any applications yet."
+        },
+        "applicationNumber": "Application #{id}",
+        "created": "Created: {date}",
+        "productId": "Product ID: {id}",
+        "applicants": "Applicants: {names}",
+        "viewDetails": "View Details"
+    },
+    "alt": {
+        "nestoMortgages": "Nesto Mortgages",
+        "nestoLogo": "Nesto logo",
+        "aboutIcon": "About icon",
+        "documentIcon": "Document icon",
+        "careerIcon": "Career icon"
+    }
+}

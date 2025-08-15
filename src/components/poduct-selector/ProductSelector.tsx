@@ -5,6 +5,7 @@ import { useGetAllProducts } from "@/utils/api/apiHooks/useGetAllProducts"
 import ProductList from "../product-list/ProductList"
 import Button from "../buttton/Button"
 import styles from "./product-selector.module.css"
+import { useTranslations } from "next-intl"
 
 const ProductSelector = () => {
     const { data: products } = useGetAllProducts()
@@ -12,20 +13,20 @@ const ProductSelector = () => {
 
     const variableProducts = products.filter((product) => product.type === "VARIABLE").sort((a, b) => a.rate - b.rate)
     const fixedProducts = products.filter((product) => product.type === "FIXED").sort((a, b) => a.rate - b.rate)
-
+    const t = useTranslations('home')
     return (
         <div className={styles.container}>
             <div className={styles.productsGrid}>
                 <ProductList
                     products={variableProducts}
-                    title="Best variable"
+                    title={t('bestVariable')}
                     isExpanded={showAll}
                     productType="variable"
                 />
 
                 <ProductList
                     products={fixedProducts}
-                    title="Best fixed"
+                    title={t('bestFixed')}
                     isExpanded={showAll}
                     productType="fixed"
                 />
@@ -37,7 +38,7 @@ const ProductSelector = () => {
                     variant="primary"
                     onClick={() => setShowAll(!showAll)}
                 >
-                    {showAll ? "Show less" : "See all products"}
+                    {showAll ? t("showLess") : t("seeAllProducts")}
                 </Button>
             </div>
         </div>

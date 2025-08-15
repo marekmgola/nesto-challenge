@@ -13,7 +13,7 @@ export const ApplicationSchema = z.object({
     id: z.string().readonly(),
     type: z.enum(["NEW", "RENEWAL", "REFINANCE"]),
     createdAt: z.string().readonly(),
-    productId: z.number().optional(),
+    productId: z.number().optional().nullable(),
     applicants: z.array(ApplicantSchema),
 });
 

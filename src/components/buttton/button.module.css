@@ -1,7 +1,7 @@
 .secondaryButton {
     background: transparent;
-    color: #374151;
-    border: 2px solid #d1d5db;
+    color: var(--color_marine);
+    border: 2px solid var(--color_gray_blue);
     border-radius: 30px;
     padding: 12px 32px;
     font-size: 16px;
@@ -12,8 +12,8 @@
 }
 
 .secondaryButton:hover {
-    background: #f3f4f6;
-    border-color: #9ca3af;
+    background: var(--color_gray_blue);
+    border-color: var(--color_gray);
     transform: translateY(-1px);
 }
 
@@ -22,8 +22,8 @@
 }
 
 .primaryButton {
-    background: #3b82f6;
-    color: white;
+    background: var(--color_yellow);
+    color: var(--color_dark_blue);
     border: none;
     border-radius: 30px;
     padding: 12px 24px;
@@ -34,9 +34,9 @@
 }
 
 .primaryButton:hover {
-    background: #2563eb;
+    background: var(--color_lighter_yellow);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px rgba(126, 176, 255, 0.3);
 }
 
 .primaryButton:active {

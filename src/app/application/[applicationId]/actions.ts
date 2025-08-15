@@ -4,13 +4,11 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { updateApplication } from "@/utils/api/apiClient";
 import { ContactFormSchema } from "@/utils/schemas/contactForm";
-import { ApplicationStatus } from "@/components/mortgage-application-form/MortgageApplicationForm";
 
 export async function updateContactDetails(formData: FormData) {
     try {
         // Parse form data
         const applicationId = formData.get("applicationId") as string;
-        const status = formData.get("status") as string;
 
         // Get all applicants from form data
         const applicants = [];
@@ -44,9 +42,7 @@ export async function updateContactDetails(formData: FormData) {
 
         // Revalidate and redirect with success message
         revalidatePath(`/application?applicationId=${applicationId}`);
-        if (status === 'NEW') {
-            redirect(`/?status=${"NEW" satisfies ApplicationStatus}`);
-        }
+        redirect(`/application?applicationId=${applicationId}&success=saved`);
     } catch (error) {
         console.error("Error updating contact details:", error);
         throw error;

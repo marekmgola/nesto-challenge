@@ -1,20 +1,15 @@
 import { Suspense } from "react";
-import MortgageApplicationForm, { ApplicationStatus } from "@/components/mortgage-application-form/MortgageApplicationForm";
-import { getUserLocale } from "@/i18n/locale";
-import { getTranslations } from "next-intl/server";
+import MortgageApplicationForm from "@/components/mortgage-application-form/MortgageApplicationForm";
 
-export type ApplicationSearchParams = { productId?: string; status?: ApplicationStatus, applicationId?: string };
+export type ApplicationSearchParams = { productId?: string; success?: 'created' | 'saved'; applicationId?: string };
 
 interface ApplicationPageProps {
     searchParams: Promise<ApplicationSearchParams>;
 }
 
-export default async function ApplicationPage({
-    searchParams,
-}: ApplicationPageProps) {
-    const t = await getTranslations();
+export default async function ApplicationPage({ searchParams }: ApplicationPageProps) {
     const params = await searchParams;
-    const { productId, applicationId } = params;
+    const { productId, success, applicationId } = params;
 
     if (!productId && !applicationId) {
         return (
@@ -31,7 +26,7 @@ export default async function ApplicationPage({
         <div className="page">
             <Suspense fallback={
                 <div className="main">
-                    <h1 className="title">{t('application.loading.fetchingDetails')}</h1>
+                    <h1 className="title">Loading...</h1>
                     <p>Creating your mortgage application...</p>
                 </div>
             }>

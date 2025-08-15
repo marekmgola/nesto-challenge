@@ -3,15 +3,18 @@
 import { useState } from "react";
 import { Application } from "@/utils/schemas/application";
 import { updateContactDetails } from "@/app/application/actions";
+import { useTranslations } from "next-intl";
 import Banner from "@/components/banner/Banner";
 import styles from "./contact-form.module.css";
 import Form from "next/form";
 import Button from "../buttton/Button";
+import { ApplicationStatus } from "./MortgageApplicationForm";
 
 interface ContactFormProps {
     application: Application;
     showCreatedBanner: boolean;
     showSavedBanner: boolean;
+    status: ApplicationStatus
 }
 
 interface ApplicantData {
@@ -24,8 +27,10 @@ interface ApplicantData {
 export default function ContactForm({
     application,
     showCreatedBanner,
-    showSavedBanner
+    showSavedBanner,
+    status
 }: ContactFormProps) {
+    const t = useTranslations();
     const [applicants, setApplicants] = useState<ApplicantData[]>(application.applicants.map(applicant => ({
         firstName: applicant.firstName,
         lastName: applicant.lastName,
@@ -34,17 +39,14 @@ export default function ContactForm({
     })));
     const [showCreatedMsg, setShowCreatedMsg] = useState(showCreatedBanner);
     const [showSavedMsg, setShowSavedMsg] = useState(showSavedBanner);
-    const [finishButtonDisabled, setFinishButtonDisabled] = useState(!application.applicants[0].firstName || !application.applicants[0].lastName || !application.applicants[0].email || !application.applicants[0].phone);
 
     const addApplicant = () => {
         setApplicants([...applicants, { firstName: "", lastName: "", email: "", phone: "" }]);
-        setFinishButtonDisabled(true);
     };
 
     const removeApplicant = (index: number) => {
         if (applicants.length > 1) {
             setApplicants(applicants.filter((_, i) => i !== index));
-            setFinishButtonDisabled(true);
         }
     };
 
@@ -52,14 +54,14 @@ export default function ContactForm({
         const updated = [...applicants];
         updated[index] = { ...updated[index], [field]: value };
         setApplicants(updated);
-        setFinishButtonDisabled(true);
     };
-
+    console.log('renderstat', status)
+    const saveButtonDisabled = !applicants.length || !applicants[0].email || !applicants[0].firstName || !applicants[0].lastName || !applicants[0].phone
     return (
         <div className={styles.container}>
             {showCreatedMsg && (
                 <Banner
-                    message="Application created!"
+                    message={t('banner.applicationCreated')}
                     type="success"
                     onDismiss={() => setShowCreatedMsg(false)}
                 />
@@ -67,16 +69,16 @@ export default function ContactForm({
 
             {showSavedMsg && (
                 <Banner
-                    message="Application saved!"
+                    message={t('banner.applicationSaved')}
                     type="success"
                     onDismiss={() => setShowSavedMsg(false)}
                 />
             )}
 
             <div className={styles.header}>
-                <h1 className={styles.title}>We just need a few details</h1>
+                <h1 className={styles.title}>{t('applicationForm.title')}</h1>
                 <p className={styles.subtitle}>
-                    Please provide contact information for all applicants
+                    {t('applicationForm.subtitle')}
                 </p>
             </div>
 
@@ -86,25 +88,31 @@ export default function ContactForm({
                     name="applicationId"
                     value={application.id}
                 />
+                <input
+                    type="hidden"
+                    name="status"
+                    value={status}
+                />
+
 
                 {applicants.map((applicant, index) => (
                     <div key={index} className={styles.applicantSection}>
                         <div className={styles.applicantHeader}>
-                            <h3>Applicant {index + 1}</h3>
+                            <h3>{t('applicationForm.applicant', { number: index + 1 })}</h3>
                             {applicants.length > 1 && (
                                 <button
                                     type="button"
                                     onClick={() => removeApplicant(index)}
                                     className={styles.removeButton}
                                 >
-                                    Remove
+                                    {t('remove')}
                                 </button>
                             )}
                         </div>
 
                         <div className={styles.fieldsGrid}>
                             <div className={styles.field}>
-                                <label htmlFor={`firstName-${index}`}>First Name *</label>
+                                <label htmlFor={`firstName-${index}`}>{t('applicationForm.firstName')}{t('applicationForm.required')}</label>
                                 <input
                                     type="text"
                                     id={`firstName-${index}`}
@@ -117,7 +125,7 @@ export default function ContactForm({
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor={`lastName-${index}`}>Last Name *</label>
+                                <label htmlFor={`lastName-${index}`}>{t('applicationForm.lastName')}{t('applicationForm.required')}</label>
                                 <input
                                     type="text"
                                     id={`lastName-${index}`}
@@ -130,7 +138,7 @@ export default function ContactForm({
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor={`email-${index}`}>Email *</label>
+                                <label htmlFor={`email-${index}`}>{t('applicationForm.email')}{t('applicationForm.required')}</label>
                                 <input
                                     type="email"
                                     id={`email-${index}`}
@@ -143,7 +151,7 @@ export default function ContactForm({
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor={`phone-${index}`}>Phone Number *</label>
+                                <label htmlFor={`phone-${index}`}>{t('applicationForm.phone')}{t('applicationForm.required')}</label>
                                 <input
                                     type="tel"
                                     id={`phone-${index}`}
@@ -152,7 +160,7 @@ export default function ContactForm({
                                     onChange={(e) => updateApplicant(index, "phone", e.target.value)}
                                     required
                                     className={styles.input}
-                                    placeholder="(555) 123-4567"
+                                    placeholder={t('applicationForm.phonePlaceholder')}
                                 />
                             </div>
                         </div>
@@ -160,12 +168,12 @@ export default function ContactForm({
                 ))}
 
                 <div className={styles.actions}>
-                    <Button variant="secondary" onClick={addApplicant}>+ Add Another Applicant</Button>
+                    <Button variant="secondary" onClick={addApplicant}>{t('applicationForm.addApplicant')}</Button>
                 </div>
 
                 <div className={styles.actions}>
-                    <Button variant="primary" type="submit">Save</Button>
-                    <Button variant="secondary" href="/" className={styles.doneButton} disabled={finishButtonDisabled}>Finished</Button>
+                    <div />
+                    <Button variant="primary" type="submit" disabled={saveButtonDisabled}>{status === 'EDIT' ? t('save') : t('finished')}</Button>
                 </div>
             </Form>
         </div>

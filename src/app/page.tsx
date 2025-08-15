@@ -3,22 +3,34 @@ import styles from "./page.module.css";
 import ProductSelector from "@/components/poduct-selector/ProductSelector";
 import { Suspense } from "react";
 import Spinner from "@/components/spinner/Spinnner";
+import { getTranslations } from "next-intl/server";
+import { ApplicationStatus } from "@/components/mortgage-application-form/MortgageApplicationForm";
+import Banner from "@/components/banner/Banner";
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: Promise<{ status: ApplicationStatus }> }) {
+  const t = await getTranslations();
+  const { status } = await searchParams
   return (
     <div className="page">
+      {status === 'NEW' ?
+        <Banner
+          message={t('banner.applicationSaved')}
+          type="success"
+          autoHide
+        />
+        : null}
       <div className={styles.header}>
         <Image
           className='hidden-on-big'
           src="/nesto-EN_Secondary.png"
-          alt="Nesto Mortgages"
+          alt={t('alt.nestoMortgages')}
           width={378 / 2}
           height={105.5 / 2}
         />
         <Image
           className='hidden-on-small'
           src="/nesto-EN_Secondary.png"
-          alt="Nesto Mortgages"
+          alt={t('alt.nestoMortgages')}
           width={378}
           height={105.5}
         />
@@ -26,7 +38,7 @@ export default async function Home() {
       <div>
 
         <p className={styles.description_white}>
-          Today’s Best <span className={styles.description_yellow}>Mortgage Rates in Canada</span>
+          {t('home.title_1')}<span className={styles.description_yellow}>{t('home.title_2')}</span>
         </p>
       </div>
       <main className={styles.main}>

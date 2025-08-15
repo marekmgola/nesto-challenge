@@ -1,0 +1,108 @@
+.applicationItem {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: var(--color-surface);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.applicationItem:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.applicationInfo {
+    flex: 1;
+}
+
+.applicationHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.applicationId {
+    color: var(--color-text-primary);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.applicationType {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.applicationType.new {
+    background: #e8f5e8;
+    color: #2d7d2d;
+}
+
+.applicationType.renewal {
+    background: #e8f4ff;
+    color: #1a73e8;
+}
+
+.applicationType.refinance {
+    background: #fff4e8;
+    color: #e8710a;
+}
+
+.applicationDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.applicationDetails p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.createdAt,
+.productId {
+    color: var(--color-text-secondary);
+}
+
+.applicants {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.applicationActions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.applicationActions form {
+    display: flex;
+}
+
+.actionButton {
+    min-width: 100px;
+}
+
+@media (max-width: 768px) {
+    .applicationItem {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .applicationActions {
+        justify-content: flex-end;
+    }
+
+    .actionButton {
+        flex: 1;
+    }
+}

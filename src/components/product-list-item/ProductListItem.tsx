@@ -3,24 +3,30 @@
 import { Product } from "@/utils/schemas/product"
 import styles from "./product-list-item.module.css"
 import Button from "../buttton/Button"
+import { useTranslations } from "next-intl"
+import { Staatliches } from "next/font/google"
+import { ApplicationStatus } from "../mortgage-application-form/MortgageApplicationForm"
 
 interface ProductListItemProps {
     product: Product
     isFirst: boolean
+    compact?: boolean
 }
 
-const ProductListItem = ({ product, isFirst, }: ProductListItemProps) => {
+const ProductListItem = ({ product, isFirst, compact }: ProductListItemProps) => {
     const formatRate = (rate: number) => `${rate.toFixed(2)}%`
-
+    const t = useTranslations()
     return (
         <>
             {!isFirst && <div className="separator" />}
             <div className={styles.productItem}>
                 <p className={styles.productName}>({product.name})</p>
                 <div className={styles.rate}>{formatRate(product.rate)}</div>
-                <Button variant="secondary" href={`/application?productId=${product.id}`}>
-                    Select
-                </Button>
+                {!compact && (
+                    <Button variant="secondary" href={`/application?productId=${product.id}&status=${'NEW' satisfies ApplicationStatus}`}>
+                        {t('select')}
+                    </Button>
+                )}
             </div>
         </>
     )

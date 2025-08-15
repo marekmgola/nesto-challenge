@@ -3,25 +3,25 @@ import { createApplication, getApplication } from "@/utils/api/apiClient";
 import { Application, ApplicationSchema } from "@/utils/schemas/application";
 import styles from "./mortgage-application-form.module.css";
 import ContactForm from "./ContactForm";
+import { getTranslations } from "next-intl/server";
 import { ApplicationSearchParams } from "@/app/application/page";
 
 
+export type ApplicationStatus = 'NEW' | 'EDIT';
+
 interface MortgageApplicationFormProps {
-    searchParams: Promise<ApplicationSearchParams>;
-    success?: string;
+    params: ApplicationSearchParams;
 }
 
 async function MortgageApplicationFormContent({
-    searchParams,
-    success
+    params,
 }: MortgageApplicationFormProps) {
+    const t = await getTranslations();
     let application: Application;
 
+    const { productId, applicationId, status } = params;
     try {
-        const params = await searchParams;
-        const { productId, applicationId, success } = params;
-
-        if (success === "saved" && applicationId) {
+        if (status === "NEW" && applicationId) {
             const response = await getApplication(applicationId);
 
             application = await response.json();
@@ -52,27 +52,27 @@ async function MortgageApplicationFormContent({
         return (
             <div className={styles.container}>
                 <div className={styles.error}>
-                    <h2>Error Creating Application</h2>
-                    <p>We encountered an error while creating your application. Please try again.</p>
+                    <h2>{t('applicationForm.error.title')}</h2>
+                    <p>{t('applicationForm.error.message')}</p>
                 </div>
             </div>
         );
     }
 
 
-
     return (
         <div className={styles.container}>
             <ContactForm
                 application={application}
-                showCreatedBanner={!success}
-                showSavedBanner={success === "saved"}
+                showCreatedBanner={status === 'NEW'}
+                showSavedBanner={status === "EDIT"}
+                status={status || 'NEW'}
             />
         </div>
     );
 }
 
-export default function MortgageApplicationForm(props: MortgageApplicationFormProps) {
+export default function MortgageApplicationForm({ searchParams }: { searchParams: ApplicationSearchParams }) {
     return (
         <Suspense fallback={
             <div className={styles.container}>
@@ -81,7 +81,7 @@ export default function MortgageApplicationForm(props: MortgageApplicationFormPr
                 </div>
             </div>
         }>
-            <MortgageApplicationFormContent {...props} />
+            <MortgageApplicationFormContent params={searchParams} />
         </Suspense>
     );
 }

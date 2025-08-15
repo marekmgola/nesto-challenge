@@ -50,3 +50,15 @@ export const updateApplication = async (application: UpdateApplication, options:
     })
 
 
+export const getAllApplications = async (options: RequestInit = {}) =>
+    fetch("https://nesto-fe-exam.vercel.app/api/applications", {
+        ...defaultOptions,
+        method: "GET",
+        ...options,
+        next: {
+            revalidate: 60 * 5, // 5 minutes
+            tags: ["applications"]
+        }
+    })
+
+
