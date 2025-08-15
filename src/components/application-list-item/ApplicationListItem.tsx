@@ -14,11 +14,11 @@ interface ApplicationListItemProps {
 const ApplicationListItem = ({ application }: ApplicationListItemProps) => {
     const t = useTranslations()
     return (
-        <div className={styles.applicationItem}>
+        <div className={styles.applicationItem} data-testid="application-list-item">
             <div className={styles.applicationInfo}>
                 <div className={styles.applicationHeader}>
-                    <h3 className={styles.applicationId}>{t('applicationList.applicationNumber', { id: application.id.slice(-8) })}</h3>
-                    <span className={`${styles.applicationType} ${styles[application.type.toLowerCase()]}`}>
+                    <h3 className={styles.applicationId} data-testid="application-id">{t('applicationList.applicationNumber', { id: application.id.slice(-8) })}</h3>
+                    <span className={`${styles.applicationType} ${styles[application.type.toLowerCase()]}`} data-testid="application-type">
                         {application.type}
                     </span>
                 </div>
@@ -41,6 +41,7 @@ const ApplicationListItem = ({ application }: ApplicationListItemProps) => {
                     variant="secondary"
                     className={styles.actionButton}
                     href={`/application/${application.id}`}
+                    
                 >
                     {t('applicationList.viewDetails')}
                 </Button>

@@ -19,11 +19,11 @@ const ProductListItem = ({ product, isFirst, compact }: ProductListItemProps) =>
     return (
         <>
             {!isFirst && <div className="separator" />}
-            <div className={styles.productItem}>
-                <p className={styles.productName}>({product.name})</p>
-                <div className={styles.rate}>{formatRate(product.rate)}</div>
+            <div className={styles.productItem} data-testid="product-item">
+                <p className={styles.productName} data-testid="product-name">({product.name})</p>
+                <div className={styles.rate} data-testid="product-rate">{formatRate(product.rate)}</div>
                 {!compact && (
-                    <Button variant="secondary" href={`/application?productId=${product.id}&status=${'NEW' satisfies ApplicationStatus}`}>
+                    <Button variant="secondary" href={`/application?productId=${product.id}&status=${'NEW' satisfies ApplicationStatus}`} data-testid="select-product">
                         {t('select')}
                     </Button>
                 )}

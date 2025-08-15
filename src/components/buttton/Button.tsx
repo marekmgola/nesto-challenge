@@ -13,21 +13,22 @@ interface ButtonProps {
     className?: string
     disabled?: boolean
     type?: "button" | "submit"
+   'data-testid'?: string
 }
 
-const Button = ({ variant = 'primary', children, href, onClick, type, className, disabled, loading }: ButtonProps) => {
+const Button = ({ variant = 'primary', children, href, onClick, type, className, disabled, "data-testid" : dataId}: ButtonProps) => {
     const buttonClassName = variant === "secondary" ? styles.secondaryButton : styles.primaryButton
     const disabledClassName = disabled ? styles.disabled : ""
     if (href) {
         return (
-            <Link href={disabled ? "#" : href || "#"} className={`${buttonClassName} ${className} ${disabledClassName}`} >
+            <Link data-testid={dataId} href={disabled ? "#" : href || "#"} className={`${buttonClassName} ${className || ''} ${disabledClassName}`} >
                 {children}
             </Link>
         )
     }
 
     return (
-        <button className={`${buttonClassName} ${className}`} onClick={disabled ? undefined : onClick} type={disabled ? undefined : type} disabled={disabled} >
+        <button data-testid={dataId} className={`${buttonClassName} ${className || ''}`} onClick={disabled ? undefined : onClick} type={disabled ? undefined : type} disabled={disabled} >
             {children}
         </button>
     )
