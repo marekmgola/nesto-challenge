@@ -29,6 +29,7 @@ export default function Footer() {
                     <Image width={24} height={24} src="/career.svg" alt={t('alt.careerIcon')} />
                     {t('nav.careers')}
                 </a>
+                <p>V 1.0</p>
             </div>
             <div className={styles.logoSection}>
                 <Image
