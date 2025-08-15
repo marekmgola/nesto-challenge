@@ -27,6 +27,7 @@ export default function Transition({ children, animation }: TransitionProps) {
             opacity: 0,
         }
     };
+    
     const animationProps: AnimationSettings = animation ?? defaultAnimationSettings
 
     return (
