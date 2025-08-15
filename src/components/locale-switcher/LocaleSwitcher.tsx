@@ -20,7 +20,7 @@ export default function LocaleSwitcherSelect({ }: LocaleSwitcherSelectProps) {
         });
     }
 
-    return <Button onClick={onChange}>
+    return <Button variant='secondary' onClick={onChange}>
         {locale === 'en' ? 'Français' : 'English'}
     </Button>
 
