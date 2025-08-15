@@ -1,7 +1,7 @@
 .loading {
     text-align: center;
     padding: 2rem;
-    color: var(--color-text-secondary);
+    color: var(--color_dark_blue);
 }
 
 .loading h2 {

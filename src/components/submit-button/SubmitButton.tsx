@@ -11,7 +11,7 @@ const SubmitButton = ({ disabled, children }: {
     const disableButton = pending || disabled
     return <Button variant="primary" loading={pending} type="submit" disabled={disableButton}>
         <div className="row">
-            {pending ? <Spinner size={12} /> : null}
+            {pending ? <Spinner size={12} color="var(--color_dark_blue)" /> : null}
             {children}
         </div>
     </Button>

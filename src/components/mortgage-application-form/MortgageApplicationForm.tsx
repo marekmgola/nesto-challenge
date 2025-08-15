@@ -27,7 +27,7 @@ async function MortgageApplicationFormContent({
             application = await response.json();
             const validatedApplication = ApplicationSchema.parse(application);
             application = validatedApplication;
-            console.log("application", application)
+
         } else {
             // Create application with the productId
             if (!applicationId) {

@@ -7,10 +7,10 @@ import { ContactFormSchema } from "@/utils/schemas/contactForm";
 import { ApplicationStatus } from "@/components/mortgage-application-form/MortgageApplicationForm";
 
 export async function updateContactDetails(formData: FormData) {
+    const status = formData.get("status") as ApplicationStatus;
     try {
         // Parse form data
         const applicationId = formData.get("applicationId") as string;
-        const status = formData.get("status") as string;
 
         // Get all applicants from form data
         const applicants = [];
@@ -42,17 +42,18 @@ export async function updateContactDetails(formData: FormData) {
             throw new Error("Failed to update application");
         }
 
-        // Revalidate and redirect with success message
+        // // Revalidate and redirect with success message
         revalidatePath(`/application?applicationId=${applicationId}`);
         revalidatePath(`/my-applications`);
         revalidatePath(`/application/${applicationId}`);
-        if (status === 'NEW') {
-            redirect(`/?status=${"NEW" satisfies ApplicationStatus}`);
-        } else {
-            redirect(`/my-applications?success=saved`);
-        }
     } catch (error) {
         console.error("Error updating contact details:", error);
         throw error;
+    }
+    console.log("Contact details updated successfully", status);
+    if (status === 'NEW') {
+        redirect(`/?status=${"NEW" satisfies ApplicationStatus}`);
+    } else {
+        redirect(`/my-applications?success=saved`);
     }
 }

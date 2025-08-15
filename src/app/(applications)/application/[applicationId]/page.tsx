@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import ApplicationDetails from "@/components/application-details/ApplicationDetails"
-import styles from "./page.module.css"
 import { useTranslations } from "next-intl";
+import LoadingMessage from "@/components/loading-message";
 
 interface ApplicationDetailsPageProps {
     params: Promise<{ applicationId: string }>
@@ -13,10 +13,8 @@ const ApplicationDetailsPage = ({ params }: ApplicationDetailsPageProps) => {
         <div className="page">
             <div className="main">
                 <Suspense fallback={
-                    <div className={styles.loading}>
-                        <h1 className="title">{t('application.loadingApplication')}</h1>
-                        <p>{t('application.loading.fetchingDetails')}</p>
-                    </div>
+                        <LoadingMessage title={t('application.loadingApplication')}
+                            message={t('application.loading.fetchingDetails')} />
                 }>
                     <ApplicationDetails params={params} />
                 </Suspense>

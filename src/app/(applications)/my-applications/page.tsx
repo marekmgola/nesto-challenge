@@ -4,6 +4,8 @@ import ApplicationList from "@/components/application-list/ApplicationList"
 import styles from "./page.module.css"
 import { useTranslations } from "next-intl";
 import SaveBanner from "@/components/save-banner/SaveBanner";
+import Spinner from "@/components/spinner/Spinnner";
+import LoadingMessage from "@/components/loading-message";
 
 const MyApplicationsPage = () => {
     const t = useTranslations();
@@ -15,10 +17,8 @@ const MyApplicationsPage = () => {
             <h1 className="title">{t('application.myApplications.title')}</h1>
             <div className="main">
                 <Suspense fallback={
-                    <div className={styles.loading}>
-                        <h2>{t('application.loadingApplications')}</h2>
-                        <p>{t('application.loading.fetchingApplications')}</p>
-                    </div>
+                        <LoadingMessage title={t('application.loadingApplication')}
+                            message={t('application.loading.fetchingDetails')} />
                 }>
                     <ApplicationList />
                 </Suspense>
