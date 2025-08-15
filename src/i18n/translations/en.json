@@ -25,7 +25,8 @@
         "bestVariable": "Best variable",
         "bestFixed": "Best fixed",
         "showLess": "Show less",
-        "seeAllProducts": "See all products"
+        "seeAllProducts": "See all products",
+        "seeMyApplications": "See my applications"
     },
     "application": {
         "error": {

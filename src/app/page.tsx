@@ -20,6 +20,11 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
           autoHide
         />
         : null}
+        {
+          status === 'NEW' ?
+            <Button variant="secondary" href="/my-applications">{t('home.seeMyApplications')}</Button>
+            : null
+          }
       <div className={styles.header}>
         <Image
           className='hidden-on-big'
@@ -46,13 +51,6 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
         <Suspense fallback={<Spinner />}>
           <ProductSelector />
         </Suspense>
-        <div className='center'>
-        {
-          status === 'NEW' ?
-            <Button variant="secondary" href="/my-applications">See my applications</Button>
-            : null
-          }
-          </div>
       </main>
     </div>
   );
