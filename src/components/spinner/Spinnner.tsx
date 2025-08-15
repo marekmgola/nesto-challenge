@@ -5,7 +5,7 @@ type SpinnerProps = {
     size?: number
 }
 
-const Spinner = ({ color = '--color_yellow', size = 50 }: SpinnerProps) => {
+const Spinner = ({ color = '--color_dark_blue', size = 50 }: SpinnerProps) => {
     return (
         <div className={styles.spinner} style={{ width: size, height: size, color: ` border: 4px solid var(${color})` }} ></div>
     )
