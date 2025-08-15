@@ -1,5 +1,5 @@
 .header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     color: var(--text-muted);
 }

@@ -1,19 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Application } from "@/utils/schemas/application";
-import { updateContactDetails } from "@/app/application/actions";
+import { updateContactDetails } from "@/app/(applications)/application/[applicationId]/actions";
 import { useTranslations } from "next-intl";
 import Banner from "@/components/banner/Banner";
 import styles from "./contact-form.module.css";
 import Form from "next/form";
 import Button from "../buttton/Button";
 import { ApplicationStatus } from "./MortgageApplicationForm";
+import SubmitButton from "../submit-button/SubmitButton";
 
 interface ContactFormProps {
     application: Application;
-    showCreatedBanner: boolean;
-    showSavedBanner: boolean;
     status: ApplicationStatus
 }
 
@@ -26,8 +25,6 @@ interface ApplicantData {
 
 export default function ContactForm({
     application,
-    showCreatedBanner,
-    showSavedBanner,
     status
 }: ContactFormProps) {
     const t = useTranslations();
@@ -37,8 +34,9 @@ export default function ContactForm({
         email: applicant.email,
         phone: applicant.phone
     })));
-    const [showCreatedMsg, setShowCreatedMsg] = useState(showCreatedBanner);
-    const [showSavedMsg, setShowSavedMsg] = useState(showSavedBanner);
+    const [showCreatedMsg, setShowCreatedMsg] = useState(status === 'NEW');
+
+
 
     const addApplicant = () => {
         setApplicants([...applicants, { firstName: "", lastName: "", email: "", phone: "" }]);
@@ -55,7 +53,9 @@ export default function ContactForm({
         updated[index] = { ...updated[index], [field]: value };
         setApplicants(updated);
     };
-    console.log('renderstat', status)
+
+    
+
     const saveButtonDisabled = !applicants.length || !applicants[0].email || !applicants[0].firstName || !applicants[0].lastName || !applicants[0].phone
     return (
         <div className={styles.container}>
@@ -64,14 +64,6 @@ export default function ContactForm({
                     message={t('banner.applicationCreated')}
                     type="success"
                     onDismiss={() => setShowCreatedMsg(false)}
-                />
-            )}
-
-            {showSavedMsg && (
-                <Banner
-                    message={t('banner.applicationSaved')}
-                    type="success"
-                    onDismiss={() => setShowSavedMsg(false)}
                 />
             )}
 
@@ -172,10 +164,12 @@ export default function ContactForm({
                 </div>
 
                 <div className={styles.actions}>
-                    <div />
-                    <Button variant="primary" type="submit" disabled={saveButtonDisabled}>{status === 'EDIT' ? t('save') : t('finished')}</Button>
+                    { status === 'EDIT' ? <Button href="/my-applications" variant="secondary">{t('applicationForm.goBack')}</Button> : <div />}
+                    <SubmitButton disabled={saveButtonDisabled}>{status === 'EDIT' ? t('save') : t('finished')}</SubmitButton>
                 </div>
             </Form>
         </div>
     );
 }
+
+

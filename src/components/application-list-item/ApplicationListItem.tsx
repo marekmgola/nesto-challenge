@@ -5,6 +5,7 @@ import Button from "../buttton/Button"
 import styles from "./application-list-item.module.css"
 import Form from "next/form"
 import { useTranslations } from "next-intl";
+import { ApplicationStatus } from "../mortgage-application-form/MortgageApplicationForm"
 
 interface ApplicationListItemProps {
     application: Application
@@ -45,7 +46,7 @@ const ApplicationListItem = ({ application }: ApplicationListItemProps) => {
                 </Button>
                 <Form action={`/application`}>
                     <input type="hidden" name="applicationId" value={application.id} />
-                    <input type="hidden" name="status" value="edit" />
+                    <input type="hidden" name="status" value={"EDIT" satisfies ApplicationStatus} />
                     <Button
                         variant="primary"
                         type="submit"

@@ -4,7 +4,7 @@ import { Application, ApplicationSchema } from "@/utils/schemas/application";
 import styles from "./mortgage-application-form.module.css";
 import ContactForm from "./ContactForm";
 import { getTranslations } from "next-intl/server";
-import { ApplicationSearchParams } from "@/app/application/page";
+import { ApplicationSearchParams } from "@/app/(applications)/application/page";
 
 
 export type ApplicationStatus = 'NEW' | 'EDIT';
@@ -21,8 +21,8 @@ async function MortgageApplicationFormContent({
 
     const { productId, applicationId, status } = params;
     try {
-        if (status === "NEW" && applicationId) {
-            const response = await getApplication(applicationId);
+        if (status === "NEW" && productId) {
+            const response = await createApplication(Number(productId));
 
             application = await response.json();
             const validatedApplication = ApplicationSchema.parse(application);
@@ -30,10 +30,11 @@ async function MortgageApplicationFormContent({
             console.log("application", application)
         } else {
             // Create application with the productId
-            if (!productId) {
-                throw new Error("Product ID is required");
+            if (!applicationId) {
+                throw new Error("Application ID is required");
             }
-            const response = await createApplication(parseInt(productId));
+            const response = await getApplication(applicationId);
+
             if (!response.ok) {
                 throw new Error("Failed to create application");
             }
@@ -64,8 +65,6 @@ async function MortgageApplicationFormContent({
         <div className={styles.container}>
             <ContactForm
                 application={application}
-                showCreatedBanner={status === 'NEW'}
-                showSavedBanner={status === "EDIT"}
                 status={status || 'NEW'}
             />
         </div>

@@ -2,18 +2,20 @@
 
 import Link from "next/link"
 import styles from "./button.module.css"
+import Spinner from "../spinner/Spinnner"
 
 interface ButtonProps {
     variant?: "secondary" | "primary"
     children: React.ReactNode
     href?: string
     onClick?: () => void
+    loading?: boolean
     className?: string
     disabled?: boolean
     type?: "button" | "submit"
 }
 
-const Button = ({ variant = 'primary', children, href, onClick, type, className, disabled }: ButtonProps) => {
+const Button = ({ variant = 'primary', children, href, onClick, type, className, disabled, loading }: ButtonProps) => {
     const buttonClassName = variant === "secondary" ? styles.secondaryButton : styles.primaryButton
     const disabledClassName = disabled ? styles.disabled : ""
     if (href) {
@@ -25,7 +27,7 @@ const Button = ({ variant = 'primary', children, href, onClick, type, className,
     }
 
     return (
-        <button className={`${buttonClassName} ${className}`} onClick={onClick} type={type} disabled={disabled} >
+        <button className={`${buttonClassName} ${className}`} onClick={disabled ? undefined : onClick} type={disabled ? undefined : type} disabled={disabled} >
             {children}
         </button>
     )

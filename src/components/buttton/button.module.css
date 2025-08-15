@@ -1,5 +1,5 @@
 .secondaryButton {
-    background: transparent;
+    background: var(--color_lighter_yellow);
     color: var(--color_marine);
     border: 2px solid var(--color_gray_blue);
     border-radius: 30px;

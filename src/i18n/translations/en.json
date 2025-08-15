@@ -58,7 +58,8 @@
         "phone": "Phone Number",
         "phonePlaceholder": "(555) 123-4567",
         "addApplicant": "+ Add Another Applicant",
-        "required": "*"
+        "required": "*",
+        "goBack": "< Go back to My Applications"
     },
     "banner": {
         "applicationCreated": "Application created!",

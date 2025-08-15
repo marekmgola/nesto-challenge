@@ -58,7 +58,8 @@
         "phone": "Numéro de téléphone",
         "phonePlaceholder": "(555) 123-4567",
         "addApplicant": "+ Ajouter un Autre Demandeur",
-        "required": "*"
+        "required": "*",
+        "goBack": "< Retour à Mes Demandes"
     },
     "banner": {
         "applicationCreated": "Demande créée!",

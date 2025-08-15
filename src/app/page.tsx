@@ -6,6 +6,7 @@ import Spinner from "@/components/spinner/Spinnner";
 import { getTranslations } from "next-intl/server";
 import { ApplicationStatus } from "@/components/mortgage-application-form/MortgageApplicationForm";
 import Banner from "@/components/banner/Banner";
+import Button from "@/components/buttton/Button";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ status: ApplicationStatus }> }) {
   const t = await getTranslations();
@@ -45,6 +46,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
         <Suspense fallback={<Spinner />}>
           <ProductSelector />
         </Suspense>
+        <div className='center'>
+        {
+          status === 'NEW' ?
+            <Button variant="secondary" href="/my-applications">See my applications</Button>
+            : null
+          }
+          </div>
       </main>
     </div>
   );

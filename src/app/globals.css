@@ -216,6 +216,12 @@ a {
 
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .separator {
   border-top: 1px dotted var(--color_light_gray);
   margin: 48px 0;
