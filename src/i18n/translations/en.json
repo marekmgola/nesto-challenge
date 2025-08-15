@@ -87,6 +87,7 @@
         },
         "applicationNumber": "Application #{id}",
         "created": "Created: {date}",
+        "time": "Time: {date}",
         "productId": "Product ID: {id}",
         "applicants": "Applicants: {names}",
         "viewDetails": "View Details"

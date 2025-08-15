@@ -87,6 +87,7 @@
         },
         "applicationNumber": "Demande #{id}",
         "created": "Créé: {date}",
+        "time": "Heure",
         "productId": "ID Produit: {id}",
         "applicants": "Demandeurs: {names}",
         "viewDetails": "Voir les Détails"

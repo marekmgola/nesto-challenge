@@ -20,7 +20,8 @@ const ApplicationList = () => {
 
     return (
         <div className={styles.applicationList}>
-            {applications.map((application) => (
+            {applications.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())           
+            .map((application) => (
                 <ApplicationListItem key={application.id} application={application} />
             ))}
         </div>

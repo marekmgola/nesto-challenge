@@ -1,6 +1,4 @@
-import { useTranslations } from "next-intl";
 import Spinner from "./spinner/Spinnner";
-import { title } from "process";
 
 function LoadingMessage({title, message} : {title:string, message:string}) {
     return (

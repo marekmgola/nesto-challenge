@@ -11,6 +11,7 @@ interface ApplicationListItemProps {
     application: Application
 }
 
+
 const ApplicationListItem = ({ application }: ApplicationListItemProps) => {
     const t = useTranslations()
     return (

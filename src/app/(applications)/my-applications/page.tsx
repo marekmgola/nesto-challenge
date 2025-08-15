@@ -1,10 +1,8 @@
 
 import { Suspense, } from "react"
 import ApplicationList from "@/components/application-list/ApplicationList"
-import styles from "./page.module.css"
 import { useTranslations } from "next-intl";
 import SaveBanner from "@/components/save-banner/SaveBanner";
-import Spinner from "@/components/spinner/Spinnner";
 import LoadingMessage from "@/components/loading-message";
 
 const MyApplicationsPage = () => {
