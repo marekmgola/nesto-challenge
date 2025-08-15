@@ -5,9 +5,7 @@ import styles from "./page.module.css"
 import { useTranslations } from "next-intl";
 import SaveBanner from "@/components/save-banner/SaveBanner";
 
-const MyApplicationsPage = ({} : {
-    searchParams: { success?: 'saved' }
-}) => {
+const MyApplicationsPage = () => {
     const t = useTranslations();
 
     return (
