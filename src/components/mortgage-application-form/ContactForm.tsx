@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState,  } from "react";
 import { Application } from "@/utils/schemas/application";
 import { updateContactDetails } from "@/app/(applications)/application/[applicationId]/actions";
 import { useTranslations } from "next-intl";

@@ -46,7 +46,7 @@ const ProductList = ({ products, title, isExpanded, productType }: ProductListPr
                         }}
                         style={{ overflow: "hidden" }}
                     >
-                        {additionalProducts.map((product, index) => (
+                        {additionalProducts.map((product) => (
                             <ProductListItem
                                 key={`${productType}-${product.id}`}
                                 product={product}

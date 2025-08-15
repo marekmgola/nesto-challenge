@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import styles from "./button.module.css"
-import Spinner from "../spinner/Spinnner"
 
 interface ButtonProps {
     variant?: "secondary" | "primary"

@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import styles from "./banner.module.css";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion"
 
 interface BannerProps {
     message: string;
@@ -11,7 +10,7 @@ interface BannerProps {
     onDismiss?: () => void;
     autoHide?: boolean;
     duration?: number;
-}
+}   
 
 export default function Banner({
     message,

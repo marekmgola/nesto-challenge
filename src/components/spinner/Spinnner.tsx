@@ -1,4 +1,3 @@
-import { size } from "zod"
 import styles from "./spinnner.module.css"
 
 type SpinnerProps = {

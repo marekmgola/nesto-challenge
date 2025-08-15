@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { getTranslations } from "next-intl/server";
 import Footer from "@/components/layout/footer/Footer";

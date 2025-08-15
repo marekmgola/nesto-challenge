@@ -1,5 +1,4 @@
 'use-client'
-import { useTranslations } from "next-intl"
 import Button from "../buttton/Button"
 import { useFormStatus } from "react-dom"
 import Spinner from "../spinner/Spinnner"

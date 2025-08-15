@@ -3,10 +3,9 @@ import { Suspense, } from "react"
 import ApplicationList from "@/components/application-list/ApplicationList"
 import styles from "./page.module.css"
 import { useTranslations } from "next-intl";
-import Banner from "@/components/banner/Banner";
 import SaveBanner from "@/components/save-banner/SaveBanner";
 
-const MyApplicationsPage = ({searchParams } : {
+const MyApplicationsPage = ({} : {
     searchParams: { success?: 'saved' }
 }) => {
     const t = useTranslations();

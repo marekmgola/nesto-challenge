@@ -1,5 +1,5 @@
 "use client"
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ComponentProps } from "react";
 
 

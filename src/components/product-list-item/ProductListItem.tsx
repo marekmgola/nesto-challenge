@@ -4,7 +4,6 @@ import { Product } from "@/utils/schemas/product"
 import styles from "./product-list-item.module.css"
 import Button from "../buttton/Button"
 import { useTranslations } from "next-intl"
-import { Staatliches } from "next/font/google"
 import { ApplicationStatus } from "../mortgage-application-form/MortgageApplicationForm"
 
 interface ProductListItemProps {

@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import MortgageApplicationForm, { ApplicationStatus } from "@/components/mortgage-application-form/MortgageApplicationForm";
-import { getUserLocale } from "@/i18n/locale";
 import { getTranslations } from "next-intl/server";
 
 export type ApplicationSearchParams = { productId?: string; status?: ApplicationStatus, applicationId?: string };
